@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Amministrazione</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Faq Amministrazione del personale non dirigente</h1>
+    <h3>Scrivi qui la tua domanda</h3>
+    
+    <form method="POST">
+        <label for="question">Question:</label><br>
+        <input type="text" id="question" name="question" required><br><br>
+        <input type="submit" value="Cerca">
+    </form>
+
+    {% if result %}
+    <h3>Domande correlate:</h3>
+    <ul>
+        {% for domanda in result %}
+        <li>{{ domanda }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <br>
+    <button onclick="window.location.href='#';">Non hai trovato quello che cercavi? Clicca qui</button>
+</body>
+</html>
